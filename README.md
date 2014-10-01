@@ -1,14 +1,7 @@
 # Script Manager
 
-An Lavavel package for concatenating and minifying javascript assets.
+A Lavavel package for concatenating and minifying javascript assets.
 
-##### Installation
-To install this package, add the following to your composer.json file
-```javascript
-"require": {
-	"bedard/script": "0.1.*"
-}
-```
 https://packagist.org/packages/bedard/script
 
 ##### Adding assets
