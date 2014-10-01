@@ -1,0 +1,28 @@
+{
+    "name" : "bedard/script",
+    "description" : "A simple JavaScript asset manager",
+    "authors" : [
+        {
+            "name" : "Scott Bedard",
+            "email" : "scottbedard90@gmail.com"
+        }
+    ],
+    "keywords" : [
+        "javascript",
+        "asset",
+        "concat",
+        "minify",
+        "laravel"
+    ],
+    "require" : {
+        "php" : ">=5.4.0",
+        "illuminate/support" : "4.2.*",
+        "werkint/jsmin" : "1.0"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Bedard\\Script": "src/"
+        }
+    },
+    "minimum-stability" : "stable"
+}
