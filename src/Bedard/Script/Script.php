@@ -28,6 +28,7 @@ class Script {
 	 * 		getEnvironment		Returns the asset environemnt
 	 * 		getMinified			Returns boolean for output minification
 	 * 		getSource			Returns the output source
+	 * 		output				Returns the fully qualified path to the output file
 	 */
 	public function getEnvironment() { return $this->environment; }
 	public function getFiles() { return $this->all; }
@@ -36,6 +37,7 @@ class Script {
 		else return $this->minified;
 	}
 	public function getSource() { return $this->source; }
+	public function output() { return $this->path . $this->name; }
 
 	/**
 	 * Setters
