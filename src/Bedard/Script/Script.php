@@ -4,7 +4,7 @@ use JsMin\Minify as Minify;
 
 class Script {
 
-	private $environment = 'local';
+	private $environment;
 	private $files = [];
 	private $minified = NULL;
 	private $name;
@@ -13,12 +13,13 @@ class Script {
 	public $src_path;
 	
 	/**
-	 * Defines the default paths for our input and output
+	 * Defines the default paths for our input and output, and default environment
 	 */
 	public function __construct()
 	{
 		$this->src_path = (function_exists('app_path')) ? app_path() . '/' : '';
 		$this->path = (function_exists('public_path')) ? public_path() . '/assets/js/' : '/assets/js/';
+		if (function_exists('app')) { $this->environment = app()->env; }
 	}
 
 	/**
