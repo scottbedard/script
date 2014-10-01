@@ -8,14 +8,16 @@ class Script {
 	private $files = [];
 	private $minified = NULL;
 	private $name;
-	private $path;
+	public $path;
 	private $source;
+	public $src_path;
 	
 	/**
-	 * Defines the default path for our output
+	 * Defines the default paths for our input and output
 	 */
 	public function __construct()
 	{
+		$this->src_path = (function_exists('app_path')) ? app_path() . '/' : '';
 		$this->path = (function_exists('public_path')) ? public_path() . '/assets/js/' : '/assets/js/';
 	}
 
@@ -39,10 +41,12 @@ class Script {
 	 * 		environment			Determines how the asset file name will be generated
 	 * 		minify				Enables or disables output minification
 	 * 		path				Sets the file location for the output
+	 * 		src					Sets the src_path for our assets
 	 */
 	public function environment($environment) { $this->environment = $environment; }
 	public function minify($minified = TRUE) { $this->minified = $minified; }
 	public function path($path) { $this->path = (substr($path, -1) == '/') ? $path : $path . '/'; }
+	public function src($path) { $this->src_path = (substr($path, -1) == '/') ? $path : $path . '/'; }
 
 	/**
 	 * Adds one or more files to the javascript pipeline
@@ -52,7 +56,7 @@ class Script {
 	public function add()
 	{
 		foreach (func_get_args() as $script) {
-			$asset = app_path() . '/' . $script;
+			$asset = $this->src_path . $script;
 			array_push($this->files, $asset);
 		}
 	}
