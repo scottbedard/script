@@ -3,14 +3,13 @@
 An Lavavel package for concatenating and minifying javascript assets.
 
 ##### Installation
-https://packagist.org/packages/bedard/script
-
 To install this package, add the following to your composer.json file
 ```javascript
 "require": {
 	"bedard/script": "0.1.*"
 }
 ```
+https://packagist.org/packages/bedard/script
 
 ##### Adding assets
 
@@ -19,7 +18,7 @@ To add a file to your javascript pipeline, call the add() method and pass in the
 ```php
 Script::add(
 	'path/to/some/asset/foo.js',
-	'some/other/asst/bar.js'
+	'some/other/asset/bar.js'
 );
 ```
 
