@@ -18,7 +18,7 @@ Script::add(
 ##### Minifying
 By default, your assets will be minified in production environments. If this is not what you would like, there are two ways you can adjust this.
 
-The simplest way to do this, is by disable minification using the minify() method
+The simplest way to do this, is by disabling minification using the minify() method
 ```php
 Script::minify(FALSE);
 ```
