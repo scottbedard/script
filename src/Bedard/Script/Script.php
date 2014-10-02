@@ -31,7 +31,7 @@ class Script {
 	 * 		output				Returns the fully qualified path to the output file
 	 */
 	public function getEnvironment() { return $this->environment; }
-	public function getFiles() { return $this->all; }
+	public function getFiles() { return $this->files; }
 	public function getMinified() {
 		if ($this->minified === NULL) return ($this->environment == 'production') ? TRUE : FALSE;
 		else return $this->minified;
