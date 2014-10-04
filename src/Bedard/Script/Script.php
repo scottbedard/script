@@ -10,14 +10,16 @@ class Script {
 	private $name;
 	public $path;
 	private $source;
-	public $src_path;
+	public $input_path;
+	public $output_path;
 	
 	/**
 	 * Defines the default paths for our input and output, and default environment
 	 */
 	public function __construct()
 	{
-		$this->src_path = (function_exists('base_path')) ? base_path() . '/' : '';
+		$this->input_path = (function_exists('base_path')) ? base_path() . '/' : '';
+		$this->output_path = (function_exists('url')) ? url('assets/js') : '/assets/js';
 		$this->path = (function_exists('public_path')) ? public_path() . '/assets/js/' : '/assets/js/';
 		if (function_exists('app')) { $this->environment = app()->env; }
 	}
@@ -37,19 +39,22 @@ class Script {
 		else return $this->minified;
 	}
 	public function getSource() { return $this->source; }
-	public function output() { return $this->path . $this->name; }
+	public function output() { return $this->output_path . '/' . $this->name; }
 
 	/**
 	 * Setters
 	 * 		environment			Determines how the asset file name will be generated
 	 * 		minify				Enables or disables output minification
 	 * 		path				Sets the file location for the output
-	 * 		src					Sets the src_path for our assets
+	 * 		src					Sets the input_path for our assets
 	 */
 	public function environment($environment) { $this->environment = $environment; }
 	public function minify($minified = TRUE) { $this->minified = $minified; }
-	public function path($path) { $this->path = (substr($path, -1) == '/') ? $path : $path . '/'; }
-	public function src($path) { $this->src_path = (substr($path, -1) == '/') ? $path : $path . '/'; }
+	public function path($path) {
+		$this->path = (substr($path, -1) == '/') ? $path : $path . '/';
+		$this->output_path = (substr($path, -1) == '/') ? $path : $path;
+	}
+	public function src($path) { $this->input_path = (substr($path, -1) == '/') ? $path : $path . '/'; }
 
 	/**
 	 * Adds one or more files to the javascript pipeline
@@ -59,7 +64,7 @@ class Script {
 	public function add()
 	{
 		foreach (func_get_args() as $script) {
-			$asset = $this->src_path . $script;
+			$asset = $this->input_path . $script;
 			array_push($this->files, $asset);
 		}
 	}
