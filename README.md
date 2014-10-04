@@ -39,7 +39,7 @@ One important thing to remember, is that this method will only write a new asset
 The best ways to utilize this, is to clear the output directory of old files when you push changes to production, or to tag your js file names with version numbers.
 
 ##### Referencing the output
-In your view, use the following command to get the location of the finalized javascript file
+Use the following method to get the location of the finalized javascript file
 ```php
 Script::output();
 ```
