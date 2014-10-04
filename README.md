@@ -6,7 +6,7 @@ https://packagist.org/packages/bedard/script
 
 ##### Adding assets
 
-To add a file to your javascript pipeline, call the add() method and pass in the path to your file(s). By default, these files will use app_path() as it's root.
+To add a file to your javascript pipeline, call the add() method and pass in the path to your file(s). By default, these files will use base_path() as it's root.
 
 ```php
 Script::add(

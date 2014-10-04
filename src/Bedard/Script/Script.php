@@ -17,7 +17,7 @@ class Script {
 	 */
 	public function __construct()
 	{
-		$this->src_path = (function_exists('app_path')) ? app_path() . '/' : '';
+		$this->src_path = (function_exists('base_path')) ? base_path() . '/' : '';
 		$this->path = (function_exists('public_path')) ? public_path() . '/assets/js/' : '/assets/js/';
 		if (function_exists('app')) { $this->environment = app()->env; }
 	}
