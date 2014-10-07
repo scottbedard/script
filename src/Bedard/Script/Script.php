@@ -119,6 +119,7 @@ class Script {
 			foreach ($this->files as $asset) {
 				if (file_exists($asset)) {
 					$this->source .= file_get_contents($asset);
+					if (!$this->minify) { $this->source .= "\n\n" }
 				}
 			}
 
